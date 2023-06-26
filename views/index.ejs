@@ -3,23 +3,23 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Toys Shop</title>
+        <title>Toys Store</title>
     </head>
 
     <body>
-        <h1>Welcome to my Toy store!</h1>
+        <h1>Welcome to my Toys Store!</h1>
         
         <!-- (1): CREATE Task -->         
         <!-- --> 
-        <form action="/Products" method="POST">   
+        <form action="/products" method="POST">   
             <input type="text" placeholder="name" name="name" />        
-            <input type="text" placeholder="price" name="quote" />
+            <input type="text" placeholder="quote" name="quote" />
             <button type="submit">Submit</button>
         </form>
         <!-- -->                               
 
         <!-- (2) READ Task -->                        
-        <h2> READ: All Toys in Database </h2>
+        <h2> READ: All Store in Database </h2>
         <ul class="quotes">
             <!-- Loop through quotes -->
             <% for(var i = 0; i < quotes.length; i++) {%>
@@ -27,7 +27,7 @@
                     <!-- Output name from the iterated quote object -->
                     <span><%= quotes[i].name %></span>:
                     <!-- Output quote from the iterated quote object -->
-                    <span><%= quotes[i].quote $ %></span>
+                    <span><%= quotes[i].quote %></span>$
                 </li>
             <% } %>
         </ul>    

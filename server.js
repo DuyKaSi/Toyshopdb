@@ -16,8 +16,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         
         // (1a) CREATE: client -> create -> database -> 'star-wars-quotes'
         // -> create -> collection -> 'quotes'
-        const db = client.db('star-wars-quotes')
-        const quotesCollection = db.collection('quotes')
+        const db = client.db('Toyshopdb')
+        const quotesCollection = db.collection('Products')
         
         // To tell Express to EJS as the template engine
         app.set('view engine', 'ejs') 
@@ -28,14 +28,14 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         // To make the 'public' folder accessible to the public
         app.use(express.static('public'))
 
-        // To teach the server to read JSON data 
+        // To teach the server to read JProductsSON data 
         app.use(bodyParser.json())
 
         // (2) READ: client -> browser -> url 
         // -> server -> '/' -> collection -> 'quotes' -> find() 
         // -> results -> index.ejs -> client
         app.get('/', (req, res) => {
-            db.collection('quotes').find().toArray()
+            db.collection('Products').find().toArray()
                 .then(results => {
 
                     // results -> server -> console
@@ -50,7 +50,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
         // (1b) CREATE: client -> index.ejs -> data -> SUBMIT 
         // -> post -> '/quotes' -> collection -> insert -> result
-        app.post('/quotes', (req, res) => {
+        app.post('/Products', (req, res) => {
             quotesCollection.insertOne(req.body)
             .then(result => {
                 

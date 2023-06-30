@@ -48,6 +48,20 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                 .catch(/* ... */)
         })
 
+        app.get('/index', (req, res) => {
+            db.collection('products').find().toArray()
+                .then(results => {
+
+                    // results -> server -> console
+                    console.log(results)
+                    
+                    // results -> index.ejs -> client -> browser 
+                    // The file 'index.ejs' must be placed inside a 'views' folder BY DEFAULT
+                    res.render('index.ejs', { quotes: results })
+                })
+                .catch(/* ... */)
+        })
+
         // (1b) CREATE: client -> index.ejs -> data -> SUBMIT 
         // -> post -> '/quotes' -> collection -> insert -> result
         app.post('/products', (req, res) => {
